@@ -1,0 +1,44 @@
+.wrapper1{
+  margin: 20px;
+  padding: 10px;
+  background-color: #e2e6eb9f;
+}
+
+h1{
+  text-align: center;
+}
+
+.link-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .link-item {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    align-items: center;
+    text-align: center;
+    background-color: skyblue;
+    width: 150px;
+    height: 140px;
+    border-radius: 10px;
+    float: left;
+    padding: 10px;
+    margin-left: 10px;
+    /* その他のスタイルを追加 */
+  }
+  
+  
+  .appicon{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+    padding: 5px;
+  }

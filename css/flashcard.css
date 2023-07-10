@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    padding: 5px;
+    width: 200px;
+  }
+
+  button {
+    padding: 5px 10px;
+  }
+
+  #flashcard-container {
+    margin-top: 20px;
+  }

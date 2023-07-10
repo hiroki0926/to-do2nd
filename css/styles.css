@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+ul {
+  list-style-type:none ;
+  padding: 0; 
+}
+
+.message1{
+  color: red;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px 4px;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 600px;
+}
+
+.spacer1{
+  height: 70px;
+}
+
+body {
+  font-family:  "メイリオ",Meiryo,sans-serif;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 50px;
+  padding-left: 20px;
+  background-color: #e2e6eb9f;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* 入力関連 */
+input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  margin:10px 10px;
+  font-size: 16px;
+  float: left;
+}
+
+.inputwrapper{
+  height: 70px;
+  margin: 10px 0;
+  margin-left: 10px;
+  }
+
+  .addingbtn{
+    display: block;
+    margin: 10px auto;
+    background-color:#3498db;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #fff;
+    border:none;
+    cursor: pointer;
+    display: inline-block;
+    opacity: 0.8;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  #inputContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e2e6eb9f;
+    z-index: 999;
+  }
+  
+  #message {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+
+
+
+
+.clicked {
+  transform: scale(0.9);
+  transition: transform 0.1s ease-in-out;
+}
+
+
+
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+/* ボタン */
+.button3{
+  float: right;
+}
+
+.complete-button {
+  float: right;
+  margin-right: 10px;
+}
+
+.delete-button {
+  float: right;
+}
+
+.addingbtn:hover{
+  background-color: #2374b1;
+  opacity: 1.0;
+}
+button:hover{
+  background-color: rgb(165, 165, 165);
+}
+
+.completed {
+  color: gray;
+  text-decoration: line-through;
+}
+
+
+.btn1 {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color:#d4d4d4;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  border-bottom: solid 3px rgb(172, 171, 171);
+}
+
+.btn1:hover{
+  background-color: rgb(71, 69, 69);
+}
+
+.btn1:active{
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+
+.appbtn{
+  background-color: lightblue;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  border-radius: 15px;
+  display: inline-block;
+  border-bottom: solid 3px #627295;
+}
+
+.appbtn:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+
+.appbtn:hover{
+  background-color: #3498db;
+}
+i.fas {
+  font-size: 16px;
+  color: #000;
+  margin-right: 5px;
+}
+
+
+/* カテゴリ分け */
+.category-study {
+  color: blue;
+}
+
+.category-shopping {
+  color: green;
+}
+
+.category-challenge {
+  color: red;
+}
+
+.category-programing{
+  color: purple;
+}
+
+
+@media all and (max-width: 1000px) {
+
+}
+
+@media all and (max-width: 750px) {
+ 
+}
+
+@media all and (max-width: 300px) {
+  
+}
+
+/* iPhone SE向けのスタイル */
+@media screen and (max-width: 375px) {
+  /* 320px以下の画面幅に適用されるスタイル */
+  /* ここにiPhone SE向けのスタイルを指定します */
+  /* フォントのサイズの調整 */
+  body {
+    font-size: 10px;
+  }
+  /* ボタンサイズの調整 */
+  .btn1 {
+    padding: 1px 1px;
+    font-size: 5px;
+    height: 20px;
+    width: 30px;
+  }
+
+  input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    margin:10px 10px;
+    font-size: 14px;
+    float: left;
+  }
+  li {
+    width: 100%;
+  }
+  
+}

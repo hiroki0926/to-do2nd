@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ToDoアプリ</title>
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./image/to-do-list.png" type="image/png">
+  <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="spacer1"></div>
+  <div class="wrapper">
+    <h1>app</h1>
+    <!-- タスクの入力フォーム -->
+    <div id="inputContainer">
+      <div class="inputwrapper">
+        <input type="text" id="taskInput" placeholder="Task">
+        <select id="categorySelect">
+          <option value="uncategorized">uncategorized</option>
+          <option value="study">Study</option>
+          <option value="shopping">shopping</option>
+          <option value="challenge">Today's Big challenge</option>
+          <option value="programing">programing</option>
+          <!-- カテゴリの追加 -->
+        </select>
+        <button class="addingbtn" id="addButton" onclick="addTask()">+</button>
+        
+        <div class="message1" id="message"></div>
+      </div>
+    </div>
+
+    <!-- ナビゲーションメニュー -->
+    <ul> 
+      <li style="border-bottom: none;">
+        <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
+        <a class="appbtn" href="./sharing.html">Sharing</a>
+        <a class="appbtn" href="./flashcard.html">Flashcard</a>
+        <!-- リンク先を追加 -->
+      </li>
+    </ul>
+
+
+  <!-- タスクリスト -->
+  <ul id="taskList"></ul>
+
+  <!-- 完了済みタスクリスト -->
+  <h2>完了済みタスク</h2>
+  <ul id="completedTaskList"></ul>
+
+
+</div>
+  <!-- フロントエンドのコンテンツ -->
+  
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+  <script src="./js/app.js"></script>
+  <script>
+    // Firebaseの構成情報を使って初期化
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  
+
+    // Firebaseへの接続が完了したことを確認するためのコード
+    var database = firebase.database();
+    console.log("Firebaseに接続しました");
+  </script>
+
+
+</body>
+</html>
+
