@@ -11,6 +11,11 @@ h1{
 .link-list {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
   }
 
   .clearfix::after {
