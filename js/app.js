@@ -198,5 +198,53 @@ setTimeout(function() {
   
 }
 
+// // 検索ボタンをクリックした時の処理
+// var searchButton = document.getElementById('searchButton');
+// searchButton.addEventListener('click', function() {
+//   searchTasks();
+// });
+
+// // 検索入力フィールドでEnterキーを押した時の処理
+// var searchInput = document.getElementById('searchInput');
+// searchInput.addEventListener('keydown', function(event) {
+//   if (event.key === 'Enter') {
+//     event.preventDefault();
+//     searchTasks();
+//   }
+// });
+
+// // タスクの検索処理
+// function searchTasks() {
+//   var keyword = searchInput.value.trim().toLowerCase();
+//   var filteredTasks = [];
+
+//   if (keyword !== '') {
+//     snapshot.forEach(function(childSnapshot) {
+//       var taskData = childSnapshot.val();
+
+//       // タスクのテキストとカテゴリをキーワードと比較し、部分一致する場合に配列に追加
+//       if (
+//         taskData.text.toLowerCase().includes(keyword) ||
+//         taskData.category.toLowerCase().includes(keyword)
+//       ) {
+//         filteredTasks.push(childSnapshot);
+//       }
+//     });
+//   } else {
+//     // キーワードが空の場合はすべてのタスクを表示
+//     filteredTasks = snapshot;
+//   }
+
+//   // タスクリストを表示する処理
+//   taskList.innerHTML = '';
+
+//   filteredTasks.forEach(function(childSnapshot) {
+//     var taskId = childSnapshot.key;
+//     var taskData = childSnapshot.val();
+
+//     // タスクアイテムの生成と表示
+//     // ...
+//   });
+// }
 
 
