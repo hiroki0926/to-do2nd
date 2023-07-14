@@ -95,18 +95,8 @@ input[type="text"] {
 }
 
 /* ボタン */
-.button3{
-  float: right;
-}
 
-.complete-button {
-  float: right;
-  margin-right: 10px;
-}
 
-.delete-button {
-  float: right;
-}
 
 .addingbtn:hover{
   background-color: #2374b1;
@@ -132,6 +122,7 @@ button:hover{
   cursor: pointer;
   border-radius: 3px;
   border-bottom: solid 3px rgb(172, 171, 171);
+  float: right;
 }
 
 .btn1:hover{

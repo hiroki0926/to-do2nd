@@ -77,19 +77,9 @@ tasksRef.on('value', function(snapshot) {
     }
     taskItem.appendChild(taskText);
 
-    var completeButton = document.createElement('i');
-    completeButton.classList.add('fas', 'fa-check','complete-button'); // 追加
-    completeButton.classList.add('btn1');
-
-
-    completeButton.addEventListener('click', function() {
-      toggleComplete(taskId, taskData.completed);
-    });
-    taskItem.appendChild(completeButton);
 
     var editButton = document.createElement('i');
         editButton.classList.add('fas', 'fa-edit','edit-button');
-        editButton.classList.add('button3');
         editButton.classList.add('btn1');
 
         editButton.addEventListener('click', function() {
@@ -108,6 +98,16 @@ tasksRef.on('value', function(snapshot) {
     taskItem.appendChild(deleteButton);
 
     taskList.appendChild(taskItem);
+
+    var completeButton = document.createElement('i');
+    completeButton.classList.add('fas', 'fa-check','complete-button'); // 追加
+    completeButton.classList.add('btn1');
+
+
+    completeButton.addEventListener('click', function() {
+      toggleComplete(taskId, taskData.completed);
+    });
+    taskItem.appendChild(completeButton);
   });
 });
 
@@ -128,10 +128,12 @@ function toggleComplete(taskId, currentCompleted) {
 
   taskText.contentEditable = true;
   taskText.focus();
-  editButton.innerText = '保存';
+    // ボタンを切り替える
+  editButton.innerText = 'Finish Edit';
+  // クラスを変更する
   editButton.classList.remove('edit-button');
   editButton.classList.add('save-button');
-
+ // イベントリスナーを変更する
   editButton.removeEventListener('click', enterEditMode);
   editButton.addEventListener('click', function() {
     exitEditMode(taskId);
@@ -145,10 +147,12 @@ function exitEditMode(taskId) {
   var editButton = taskItem.querySelector('.save-button');
 
   taskText.contentEditable = false;
-  editButton.innerText = '編集';
+   // ボタンを切り替える
+   editButton.innerText = '';
+   // クラスを変更する
   editButton.classList.remove('save-button');
   editButton.classList.add('edit-button');
-
+// イベントリスナーを変更する
   editButton.removeEventListener('click', exitEditMode);
   editButton.addEventListener('click', function() {
     enterEditMode(taskId);
@@ -158,6 +162,17 @@ function exitEditMode(taskId) {
   if (newText !== '') {
     updateTaskText(taskId, newText);
   }
+
+   // ボタンを元のi要素に戻す
+   var originalButton = document.createElement('i');
+   originalButton.classList.add('fas', 'fa-edit', 'edit-button');
+   originalButton.classList.add('btn1');
+   completeButton.addEventListener('click', function() {
+    toggleComplete(taskId, taskData.completed);
+  });
+  taskItem.appendChild(completeButton);
+ 
+   editButton.parentNode.replaceChild(originalButton, editButton);
 }
 
 // タスクのテキストを更新する処理
