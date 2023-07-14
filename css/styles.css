@@ -84,25 +84,15 @@ input[type="text"] {
     margin-left: 10px;
   }
   
-
-
-
-
 .clicked {
   transform: scale(0.9);
   transition: transform 0.1s ease-in-out;
 }
 
-
-
-
 .wrapper{
   display: flex;
   flex-direction: column;
 }
-
-
-
 
 /* ボタン */
 .button3{
