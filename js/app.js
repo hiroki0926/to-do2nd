@@ -198,6 +198,18 @@ setTimeout(function() {
   
 }
 
+// ページの読み込みが完了したときに実行される処理
+window.addEventListener('DOMContentLoaded', (event) => {
+  // キーボードの"/"キーが押されたときにテキストボックスにフォーカスを移動させる
+  document.addEventListener('keydown', (event) => {
+    if (event.key === '/') {
+      event.preventDefault(); // デフォルトの動作をキャンセルする
+      document.getElementById('taskInput').focus(); // テキストボックスにフォーカスを移動させる
+    }
+  });
+});
+
+
 // // 検索ボタンをクリックした時の処理
 // var searchButton = document.getElementById('searchButton');
 // searchButton.addEventListener('click', function() {
