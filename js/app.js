@@ -26,13 +26,13 @@ var taskList = document.getElementById('taskList');
 
 function addTask() {
   var taskText = taskInput.value.trim();
-  var category = categorySelect.value;
+  var category = categorySelect.value;   // 選択されたジャンル
 
   if (taskText !== '') {
     var newTaskRef = tasksRef.push();
     newTaskRef.set({
       text: taskText,
-      category:category,
+      category:category,// ジャンルを保存
       completed: false
     });
     taskInput.value = '';
@@ -72,11 +72,28 @@ tasksRef.on('value', function(snapshot) {
      // カテゴリに応じてクラスを追加
      taskItem.classList.add('category-' + taskData.category);
     
+     var categorySelect = document.createElement('select'); // ジャンル選択ボタン
+     categorySelect.classList.add('btn1','selecter');
+     categorySelect.addEventListener('change', function() {
+       changeCategory(taskId, categorySelect.value); // ジャンルの変更処理を呼び出す
+     });
+
+      // ジャンル選択肢を追加
+    var categories = ["未分類","study", "shopping", "challenge", "programming"];
+    for (var i = 0; i < categories.length; i++) {
+      var option = document.createElement('option');
+      option.value = categories[i];
+      option.text = categories[i];
+      categorySelect.appendChild(option);
+    }
+    categorySelect.value = taskData.category; // 現在のジャンルを設定
+ 
+
     if (taskData.completed) {
       taskText.classList.add('completed');
     }
     taskItem.appendChild(taskText);
-
+    taskItem.appendChild(categorySelect); // ジャンル選択ボタンを追加
 
     var editButton = document.createElement('i');
         editButton.classList.add('fas', 'fa-edit','edit-button');
@@ -198,6 +215,15 @@ setTimeout(function() {
   
 }
 
+// ジャンルの変更処理
+function changeCategory(taskId, newCategory) {
+  var taskRef = tasksRef.child(taskId);
+  taskRef.update({
+    category: newCategory
+  });
+}
+
+
 // ページの読み込みが完了したときに実行される処理
 window.addEventListener('DOMContentLoaded', (event) => {
   // キーボードの"/"キーが押されたときにテキストボックスにフォーカスを移動させる
@@ -208,55 +234,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   });
 });
-
-
-// // 検索ボタンをクリックした時の処理
-// var searchButton = document.getElementById('searchButton');
-// searchButton.addEventListener('click', function() {
-//   searchTasks();
-// });
-
-// // 検索入力フィールドでEnterキーを押した時の処理
-// var searchInput = document.getElementById('searchInput');
-// searchInput.addEventListener('keydown', function(event) {
-//   if (event.key === 'Enter') {
-//     event.preventDefault();
-//     searchTasks();
-//   }
-// });
-
-// // タスクの検索処理
-// function searchTasks() {
-//   var keyword = searchInput.value.trim().toLowerCase();
-//   var filteredTasks = [];
-
-//   if (keyword !== '') {
-//     snapshot.forEach(function(childSnapshot) {
-//       var taskData = childSnapshot.val();
-
-//       // タスクのテキストとカテゴリをキーワードと比較し、部分一致する場合に配列に追加
-//       if (
-//         taskData.text.toLowerCase().includes(keyword) ||
-//         taskData.category.toLowerCase().includes(keyword)
-//       ) {
-//         filteredTasks.push(childSnapshot);
-//       }
-//     });
-//   } else {
-//     // キーワードが空の場合はすべてのタスクを表示
-//     filteredTasks = snapshot;
-//   }
-
-//   // タスクリストを表示する処理
-//   taskList.innerHTML = '';
-
-//   filteredTasks.forEach(function(childSnapshot) {
-//     var taskId = childSnapshot.key;
-//     var taskData = childSnapshot.val();
-
-//     // タスクアイテムの生成と表示
-//     // ...
-//   });
-// }
-
-

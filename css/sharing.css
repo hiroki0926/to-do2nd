@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+
+  ul {
+    list-style-type:none ;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .memo-app {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* ナビゲーションメニュー */
+  .appbtn{
+    background-color: lightblue;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    border-radius: 15px;
+    display: inline-block;
+    border-bottom: solid 3px #627295;
+  }
+  
+  .appbtn:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    border-bottom: none;
+  }
+  
+  .appbtn:hover{
+    background-color: #3498db;
+  }
+  
+  i.fas {
+    font-size: 105px;
+    color: black;
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+
+  

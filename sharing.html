@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>メモ帳アプリ</title>
+  <link rel="stylesheet" type="text/css" href="./css/sharing.css">
+  <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>My desk</h1>
+    <ul> 
+        <li style="border-bottom: none;">
+          <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
+          <a class="appbtn" href="./sharing.html">Sharing</a>
+          <a class="appbtn" href="./flashcard.html">Flashcard</a>
+          <!-- リンク先を追加 -->
+        </li>
+      </ul>
+    <div class="memo-app">
+    <div class="message1" id="message"></div>
+      <textarea id="memo-input" placeholder="メモを入力してください"></textarea>
+      <button id="save-button">保存</button>
+      <button id="clear-button">データベースをクリア</button>
+      <div id="memo-list"></div>
+    </div>
+  </div>
+
+ <!-- フロントエンドのコンテンツ -->
+  
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+<script src="./js/sharing.js"></script>
+<script>
+  // Firebaseの構成情報を使って初期化
+
+   // Firebaseへの接続が完了したことを確認するためのコード
+   var database = firebase.database();
+   console.log("Firebaseに接続しました");
+
+</script>
+ 
+
+
+</body>
+</html>
+
