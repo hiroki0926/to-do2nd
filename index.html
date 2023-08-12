@@ -9,44 +9,46 @@
 </head>
 <body>
 
-  <div class="spacer1"></div>
+<header >
+ <!-- ナビゲーションメニュー -->
+ <ul class="navigatebutton"> 
+  <li style="border-bottom: none;">
+    <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
+    <a class="appbtn" href="./index.html"><i class="fa-solid fa-list"></i></a>
+    <a class="appbtn" href="./sharing.html">Sharing</a>
+    <a class="appbtn" href="./flashcard.html">Flashcard</a>
+    <a class="appbtn" href="./training.html">Training</a>
+    <!-- リンク先を追加 -->
+  </li>
+</ul>
+</header>
+
+  <div id="inputContainer">
+    <!-- タスクの入力フォーム -->
+    <div class="inputGroup">
+      <input type="text" id="taskInput" placeholder="Task">
+      <button class="addingbtn" id="addButton" onclick="addTask()">+</button>
+      <div class="message1" id="message"></div>
+    </div>
+    <div class="inputGroup">
+      <select  class="btn1" id="categorySelect">
+        <option value="uncategorized">uncategorized</option>
+        <option value="study">Study</option>
+        <option value="shopping">shopping</option>
+        <option value="challenge">Today's Big challenge</option>
+        <option value="programing">programing</option>
+        <!-- カテゴリの追加 -->
+      </select>
+      <!-- タスクの数を表示する要素 -->
+      <div id="taskCount">タスク数: 0</div>
+    </div>
+</div>
+
   <div class="wrapper">
     <h1>ToDo List</h1>
-    <!-- タスクの入力フォーム -->
-    <div id="inputContainer">
-      <div class="inputwrapper">
-        <input type="text" id="taskInput" placeholder="Task">
-        <button class="addingbtn" id="addButton" onclick="addTask()">+</button>
-        <select id="categorySelect">
-          <option value="uncategorized">uncategorized</option>
-          <option value="study">Study</option>
-          <option value="shopping">shopping</option>
-          <option value="challenge">Today's Big challenge</option>
-          <option value="programing">programing</option>
-          <!-- カテゴリの追加 -->
-        </select>
-        <div class="message1" id="message"></div>
-      </div>
-    </div>
-
-    <!-- ナビゲーションメニュー -->
-    <ul> 
-      <li style="border-bottom: none;">
-        <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
-        <a class="appbtn" href="./sharing.html">Sharing</a>
-        <a class="appbtn" href="./flashcard.html">Flashcard</a>
-        <a class="appbtn" href="./training.html">Training</a>
-        <!-- リンク先を追加 -->
-      </li>
-    </ul>
-
-    <!-- <div id="searchContainer">
-      <input type="text" id="searchInput" placeholder="検索">
-      <button id="searchButton"><i class="fas fa-search"></i></button>
-    </div> -->
-    
+ 
   <!-- タスクリスト -->
-  <ul id="taskList"></ul>
+  <ul id="taskList" class="tasklist"></ul>
 
   <!-- 完了済みタスクリスト -->
   <h2>完了済みタスク</h2>

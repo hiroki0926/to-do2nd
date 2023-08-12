@@ -1,30 +1,114 @@
+/* header設定start-------------------- */
+/* header設定end----------------------- */
+
+
+
+/* 基本設定start------------------- */
 * {
   box-sizing: border-box;
-}
-
-li {
-  list-style-type: none;
 }
 ul {
   list-style-type:none ;
   padding: 0; 
 }
+/* 基本設定end --------------------*/
 
+/* header設定start-------------------- */
+header{
+  background-color: white;
+  text-align: center;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between; /* 要素間のスペースを均等にする */
+}
+.navigatebutton{
+  margin-left: 10px;
+}
+.appbtn{
+  background-color: lightblue;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  border-radius: 15px;
+  display: inline-block;
+  border-bottom: solid 3px #627295;
+}
+.appbtn:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.appbtn:hover{
+  background-color: #3498db;
+}
+i.fas {
+  font-size: 16px;
+  color: #000;
+  margin-right: 5px;
+}
+/* header設定end----------------------- */
+
+/* input要素start------------------ */
 .message1{
   color: red;
-  background-color: white;
   border-radius: 5px;
   padding: 2px 4px;
+  display: inline-block;
+  margin-left: 10px;
+  background-color: white;
 }
-
-li {
+input[type="text"] {
+  width: 300px;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
-  width: 600px;
+  margin:10px 10px;
+  font-size: 16px;
+  float: left;
 }
-
-.spacer1{
-  height: 70px;
+  .addingbtn{
+    display: block;
+    margin: 10px auto;
+    background-color:#3498db;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #fff;
+    border:none;
+    cursor: pointer;
+    display: inline-block;
+    opacity: 0.8;
+    border-radius: 4px;
+    text-align: center;
+  }
+  #inputContainer {
+    height: 80px;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #e2e6eb9f;
+    z-index: 800;
+    display: flex;
+    justify-content: space-between; /* 要素間のスペースを均等にする */
+  }
+  .inputGroup {
+    display: flex;
+    align-items: center; /* 要素を縦方向に中央揃えにする */
+    gap: 10px; /* 要素間の間隔 */
+}
+.clicked {
+  transform: scale(0.9);
+  transition: transform 0.1s ease-in-out;
+}
+/* input要素end------------------- */
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  margin-top: 160px;
 }
 
 body {
@@ -40,64 +124,18 @@ h1 {
   text-align: center;
 }
 
-/* 入力関連 */
-input[type="text"] {
-  width: 300px;
+.task{
+  width: 600px;
+  list-style-type: none;
   padding: 10px;
-  margin:10px 10px;
-  font-size: 16px;
-  float: left;
+  border-bottom: 1px solid #ccc;
 }
-
-.inputwrapper{
-  height: 70px;
-  margin: 10px 0;
-  margin-left: 10px;
-  }
-
-  .addingbtn{
-    display: block;
-    margin: 10px auto;
-    background-color:#3498db;
-    padding: 10px 20px;
-    font-size: 20px;
-    color: #fff;
-    border:none;
-    cursor: pointer;
-    display: inline-block;
-    opacity: 0.8;
-    border-radius: 4px;
-    text-align: center;
-  }
-
-  #inputContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #e2e6eb9f;
-    z-index: 999;
-  }
-  
-  #message {
-    display: inline-block;
-    margin-left: 10px;
-  }
-  
-.clicked {
-  transform: scale(0.9);
-  transition: transform 0.1s ease-in-out;
-}
-
 .wrapper{
   display: flex;
   flex-direction: column;
 }
 
 /* ボタン */
-
-
-
 .addingbtn:hover{
   background-color: #2374b1;
   opacity: 1.0;
@@ -144,31 +182,6 @@ button:hover{
   background-color:#d4d4d4;
 }
 
-.appbtn{
-  background-color: lightblue;
-  padding: 10px 20px;
-  font-size: 20px;
-  color: black;
-  text-decoration: none;
-  border-radius: 15px;
-  display: inline-block;
-  border-bottom: solid 3px #627295;
-}
-
-.appbtn:active {
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);
-  border-bottom: none;
-}
-
-.appbtn:hover{
-  background-color: #3498db;
-}
-i.fas {
-  font-size: 16px;
-  color: #000;
-  margin-right: 5px;
-}
 
 
 /* カテゴリ分け */
@@ -184,9 +197,19 @@ i.fas {
   color: red;
 }
 
-.category-programing{
+.category-programming{
   color: purple;
 }
+.category-work{
+  color: darkcyan;
+}
+.category-DIY{
+  color: orangered;
+}
+.category-hobby{
+  color: darkorchid;
+}
+
 
 
 @media all and (max-width: 1000px) {

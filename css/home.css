@@ -1,5 +1,47 @@
+/* header設定start-------------------- */
+header{
+  background-color: white;
+  text-align: center;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between; /* 要素間のスペースを均等にする */
+}
+.navigatebutton{
+  margin-left: 10px;
+}
+.appbtn{
+  background-color: lightblue;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  border-radius: 15px;
+  display: inline-block;
+  border-bottom: solid 3px #627295;
+}
+.appbtn:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.appbtn:hover{
+  background-color: #3498db;
+}
+i.fas {
+  font-size: 16px;
+  color: #000;
+  margin-right: 5px;
+}
+/* header設定end----------------------- */
+
+
 .wrapper1{
-  margin: 20px;
+  margin: 80px 20px;
   padding: 10px;
   background-color: #e2e6eb9f;
 }
@@ -7,7 +49,10 @@
 h1{
   text-align: center;
 }
-
+ul {
+  list-style-type:none ;
+  padding: 0; 
+}
 .link-list {
     list-style: none;
     padding: 0;

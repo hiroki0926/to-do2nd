@@ -17,12 +17,28 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var tasksRef = database.ref('tasks');
 
+// ページの読み込みが完了したときに実行される処理
+window.addEventListener('DOMContentLoaded', (event) => {
+  // キーボードの"/"キーが押されたときにテキストボックスにフォーカスを移動させる
+  document.addEventListener('keydown', (event) => {
+    if (event.key === '/') {
+      event.preventDefault(); // デフォルトの動作をキャンセルする
+      document.getElementById('taskInput').focus(); // テキストボックスにフォーカスを移動させる
+    }
+  });
+  // 初回タスク数の更新
+  updateTaskCount();
+});
+
+
+
+
+
 // タスクの追加
 var taskInput = document.getElementById('taskInput');
 var addButton = document.getElementById('addButton');
 var categorySelect = document.getElementById('categorySelect');
 var taskList = document.getElementById('taskList');
-
 
 function addTask() {
   var taskText = taskInput.value.trim();
@@ -48,7 +64,10 @@ function addTask() {
   setTimeout(function() {
   addButton.classList.remove('clicked');
   },200)
+  // タスクの数を更新
+  updateTaskCount();
 }
+
 taskInput.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault(); // デフォルトのEnterキーの挙動をキャンセルする
@@ -65,6 +84,7 @@ tasksRef.on('value', function(snapshot) {
     var taskData = childSnapshot.val();
 
     var taskItem = document.createElement('li');
+    taskItem.classList.add('task');
     taskItem.setAttribute('data-task-id', taskId);
 
     var taskText = document.createElement('span');
@@ -79,7 +99,7 @@ tasksRef.on('value', function(snapshot) {
      });
 
       // ジャンル選択肢を追加
-    var categories = ["未分類","study", "shopping", "challenge", "programming"];
+    var categories = ["未分類","study", "shopping", "challenge", "programming","work","DIY","hobby"];
     for (var i = 0; i < categories.length; i++) {
       var option = document.createElement('option');
       option.value = categories[i];
@@ -212,7 +232,7 @@ setTimeout(function() {
   messageElement.textContent = '';
 }, 2000);
   }
-  
+  updateTaskCount();
 }
 
 // ジャンルの変更処理
@@ -223,14 +243,11 @@ function changeCategory(taskId, newCategory) {
   });
 }
 
-
-// ページの読み込みが完了したときに実行される処理
-window.addEventListener('DOMContentLoaded', (event) => {
-  // キーボードの"/"キーが押されたときにテキストボックスにフォーカスを移動させる
-  document.addEventListener('keydown', (event) => {
-    if (event.key === '/') {
-      event.preventDefault(); // デフォルトの動作をキャンセルする
-      document.getElementById('taskInput').focus(); // テキストボックスにフォーカスを移動させる
-    }
+// タスクの数を更新する処理
+function updateTaskCount() {
+  var taskCount = document.getElementById('taskCount');
+  tasksRef.once('value', function(snapshot) {
+    var count = snapshot.numChildren();
+    taskCount.textContent = 'タスク数: ' + count;
   });
-});
+}

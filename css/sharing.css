@@ -1,3 +1,47 @@
+/* header設定start-------------------- */
+header{
+  background-color: white;
+  text-align: center;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between; /* 要素間のスペースを均等にする */
+}
+.navigatebutton{
+  margin-left: 10px;
+}
+.appbtn{
+  background-color: lightblue;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  border-radius: 15px;
+  display: inline-block;
+  border-bottom: solid 3px #627295;
+}
+.appbtn:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.appbtn:hover{
+  background-color: #3498db;
+}
+i.fas {
+  font-size: 16px;
+  color: #000;
+  margin-right: 5px;
+}
+/* header設定end----------------------- */
+
+
+
+
 body {
     font-family: Arial, sans-serif;
   }
@@ -10,6 +54,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    padding-top: 80px;
   }
   
   .memo-app {
@@ -39,33 +84,6 @@ body {
     background-color: #2980b9;
   }
   
-  /* ナビゲーションメニュー */
-  .appbtn{
-    background-color: lightblue;
-    padding: 10px 20px;
-    font-size: 20px;
-    color: black;
-    text-decoration: none;
-    border-radius: 15px;
-    display: inline-block;
-    border-bottom: solid 3px #627295;
-  }
-  
-  .appbtn:active {
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
-    border-bottom: none;
-  }
-  
-  .appbtn:hover{
-    background-color: #3498db;
-  }
-  
-  i.fas {
-    font-size: 105px;
-    color: black;
-    margin-bottom: 5px;
-    padding: 5px;
-  }
+ 
 
   
