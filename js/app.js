@@ -28,6 +28,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
   // 初回タスク数の更新
   updateTaskCount();
+
+   // カテゴリ選択要素にイベントリスナーを追加
+   categorySelect.addEventListener('change', filterTasks);
 });
 
 
@@ -87,6 +90,8 @@ tasksRef.on('value', function(snapshot) {
     taskItem.classList.add('task');
     taskItem.setAttribute('data-task-id', taskId);
 
+   
+    // タスクテキストの表示
     var taskText = document.createElement('span');
     taskText.innerText = taskData.text;
      // カテゴリに応じてクラスを追加
@@ -99,7 +104,7 @@ tasksRef.on('value', function(snapshot) {
      });
 
       // ジャンル選択肢を追加
-    var categories = ["未分類","study", "shopping", "challenge", "programming","work","DIY","hobby"];
+    var categories = ["未分類","study", "shopping", "challenge", "programming","work","DIY","hobby","circle"];
     for (var i = 0; i < categories.length; i++) {
       var option = document.createElement('option');
       option.value = categories[i];
@@ -134,7 +139,7 @@ tasksRef.on('value', function(snapshot) {
     });
     taskItem.appendChild(deleteButton);
 
-    taskList.appendChild(taskItem);
+    
 
     var completeButton = document.createElement('i');
     completeButton.classList.add('fas', 'fa-check','complete-button'); // 追加
@@ -145,7 +150,15 @@ tasksRef.on('value', function(snapshot) {
       toggleComplete(taskId, taskData.completed);
     });
     taskItem.appendChild(completeButton);
+
+      // タスクのカテゴリを表示
+  var category = taskData.category;
+  taskItem.setAttribute('data-category', category);
+
+  taskList.appendChild(taskItem);
   });
+
+
 });
 
 // タスクの完了状態の切り替えと移動
@@ -249,5 +262,20 @@ function updateTaskCount() {
   tasksRef.once('value', function(snapshot) {
     var count = snapshot.numChildren();
     taskCount.textContent = 'タスク数: ' + count;
+  });
+}
+
+function filterTasks() {
+  var categorySelect = document.getElementById('categorySelect');
+  var selectedCategory = categorySelect.value;
+  var taskItems = document.querySelectorAll('.task');
+
+  taskItems.forEach(function (taskItem) {
+    var category = taskItem.getAttribute('data-category');
+    if (selectedCategory === 'all' || category === selectedCategory) {
+      taskItem.style.display = 'block'; // カテゴリが一致する場合、表示
+    } else {
+      taskItem.style.display = 'none'; // カテゴリが一致しない場合、非表示
+    }
   });
 }

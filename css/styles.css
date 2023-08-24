@@ -209,7 +209,9 @@ button:hover{
 .category-hobby{
   color: darkorchid;
 }
-
+.category-circle{
+  color: rgb(71, 157, 255);
+}
 
 
 @media all and (max-width: 1000px) {
@@ -228,27 +230,31 @@ button:hover{
 @media screen and (max-width: 375px) {
   /* 320px以下の画面幅に適用されるスタイル */
   /* ここにiPhone SE向けのスタイルを指定します */
-  /* フォントのサイズの調整 */
-  body {
-    font-size: 10px;
-  }
-  /* ボタンサイズの調整 */
-  .btn1 {
-    padding: 1px 1px;
-    font-size: 5px;
-    height: 20px;
-    width: 30px;
+
+   /* フォントサイズの調整 */
+   body {
+    font-size: 14px; /* フォントサイズを調整して読みやすく */
   }
 
-  input[type="text"] {
-    width: 60%;
-    padding: 10px;
-    margin:10px 10px;
-    font-size: 14px;
-    float: left;
+  /* ボタンサイズの調整 */
+  .addingbtn,
+  .btn1,
+  .appbtn {
+    padding: 5px 10px; /* ボタンのパディングを調整 */
+    font-size: 16px; /* ボタンのフォントサイズを調整 */
   }
-  li {
+
+  /* タスクの入力フォーム */
+  input[type="text"] {
+    width: 100%; /* 幅を100%にして画面幅いっぱいに広げる */
+    padding: 10px;
+    margin: 10px 0; /* 上下のマージンを調整 */
+    font-size: 16px;
+    float: none; /* floatを解除して中央配置 */
+  }
+
+  /* タスクリストの幅を100%に */
+  .task {
     width: 100%;
   }
-  
 }

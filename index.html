@@ -15,7 +15,7 @@
   <li style="border-bottom: none;">
     <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
     <a class="appbtn" href="./index.html"><i class="fa-solid fa-list"></i></a>
-    <a class="appbtn" href="./sharing.html">Sharing</a>
+    <a class="appbtn" href="./sharing.html">Memo</a>
     <a class="appbtn" href="./flashcard.html">Flashcard</a>
     <a class="appbtn" href="./training.html">Training</a>
     <!-- リンク先を追加 -->
@@ -37,22 +37,39 @@
         <option value="shopping">shopping</option>
         <option value="challenge">Today's Big challenge</option>
         <option value="programing">programing</option>
+        <option value="circle">circle</option>
         <!-- カテゴリの追加 -->
       </select>
       <!-- タスクの数を表示する要素 -->
       <div id="taskCount">タスク数: 0</div>
     </div>
+
+
 </div>
 
   <div class="wrapper">
-    <h1>ToDo List</h1>
- 
   <!-- タスクリスト -->
+  <h2>タスク</h2>
+  <div class="inputGroup">
+    <label for="categorySelect">カテゴリを選択:</label>
+    <select class="btn1" id="categorySelect" onchange="filterTasks()">
+      <option value="all">すべてのカテゴリ</option>
+      <option value="uncategorized">未分類</option>
+      <option value="study">Study</option>
+      <option value="shopping">Shopping</option>
+      <option value="challenge">Today's Big Challenge</option>
+      <option value="programming">Programming</option>
+      <!-- 他のカテゴリも追加 -->
+    </select>
+  </div>
   <ul id="taskList" class="tasklist"></ul>
 
   <!-- 完了済みタスクリスト -->
-  <h2>完了済みタスク</h2>
-  <ul id="completedTaskList"></ul>
+
+  <!-- <h2>完了済みタスク</h2>
+  <ul id="completedTaskList"></ul> -->
+
+  <!-- タスク操作ドロップダウンメニュー -->
 
 
 </div>
