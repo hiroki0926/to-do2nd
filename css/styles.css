@@ -233,7 +233,7 @@ button:hover{
 
    /* フォントサイズの調整 */
    body {
-    font-size: 14px; /* フォントサイズを調整して読みやすく */
+    font-size: 10px; /* フォントサイズを調整して読みやすく */
   }
 
   /* ボタンサイズの調整 */
@@ -241,7 +241,36 @@ button:hover{
   .btn1,
   .appbtn {
     padding: 5px 10px; /* ボタンのパディングを調整 */
-    font-size: 16px; /* ボタンのフォントサイズを調整 */
+    font-size: 12px; /* ボタンのフォントサイズを調整 */
+  }
+  .appbtn{
+    border-radius: 20%;
+  }
+  .btn1 {
+    margin-left: 5px;
+    padding: 2.5px 5px;
+    border-radius: 3px;
+    height: 22px;
+    width: 22px;
+  }
+  .fa-check::before,
+  .fa-trash::before,
+  .fa-edit::before{
+    font-size: 10px;
+  }
+  .selectlabel{
+    width: 100px;
+  }
+
+  
+  .btn1:hover{
+    background-color: rgb(71, 69, 69);
+  }
+  
+  .btn1:active{
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    border-bottom: none;
   }
 
   /* タスクの入力フォーム */

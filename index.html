@@ -13,11 +13,12 @@
  <!-- ナビゲーションメニュー -->
  <ul class="navigatebutton"> 
   <li style="border-bottom: none;">
-    <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
     <a class="appbtn" href="./index.html"><i class="fa-solid fa-list"></i></a>
+    <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
     <a class="appbtn" href="./sharing.html">Memo</a>
     <a class="appbtn" href="./flashcard.html">Flashcard</a>
     <a class="appbtn" href="./training.html">Training</a>
+    <a class="appbtn" href="./profile.html">about me</a>
     <!-- リンク先を追加 -->
   </li>
 </ul>
@@ -31,7 +32,7 @@
       <div class="message1" id="message"></div>
     </div>
     <div class="inputGroup">
-      <select  class="btn1" id="categorySelect">
+      <select  class="btn1 selectlabel" id="categorySelect">
         <option value="uncategorized">uncategorized</option>
         <option value="study">Study</option>
         <option value="shopping">shopping</option>
@@ -52,7 +53,7 @@
   <h2>タスク</h2>
   <div class="inputGroup">
     <label for="categorySelect">カテゴリを選択:</label>
-    <select class="btn1" id="categorySelect" onchange="filterTasks()">
+    <select class="btn1 selectlabel" id="categorySelect" onchange="filterTasks()">
       <option value="all">すべてのカテゴリ</option>
       <option value="uncategorized">未分類</option>
       <option value="study">Study</option>
