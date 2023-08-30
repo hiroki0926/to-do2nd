@@ -262,15 +262,10 @@ button:hover{
     width: 100px;
   }
 
-  
-  .btn1:hover{
-    background-color: rgb(71, 69, 69);
-  }
-  
-  .btn1:active{
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
-    border-bottom: none;
+
+  #taskCount{
+    font-size: 10px;
+    width: 70px;
   }
 
   /* タスクの入力フォーム */

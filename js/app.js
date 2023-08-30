@@ -261,7 +261,7 @@ function updateTaskCount() {
   var taskCount = document.getElementById('taskCount');
   tasksRef.once('value', function(snapshot) {
     var count = snapshot.numChildren();
-    taskCount.textContent = 'タスク数: ' + count;
+    taskCount.textContent = 'Tasks: ' + count;
   });
 }
 
