@@ -9,24 +9,30 @@
 </head>
 <body>
 
-<header >
- <!-- ナビゲーションメニュー -->
- <ul class="navigatebutton"> 
-  <li style="border-bottom: none;">
-    <a class="appbtn" href="./index.html"><i class="fa-solid fa-list"></i></a>
-    <a class="appbtn" href="./home.html"><i class="fa-solid fa-house"></i></a>
-    <a class="appbtn" href="./sharing.html">Memo</a>
-    <a class="appbtn" href="./flashcard.html">Flashcard</a>
-    <a class="appbtn" href="./training.html">Training</a>
-    <a class="appbtn" href="./profile.html">about me</a>
-    <!-- リンク先を追加 -->
-  </li>
-</ul>
-</header>
+
+<div class="overlay"></div>
+  <nav class="nav">
+    <div class="logo">
+      <a href="#">LOGO</a>
+    </div>
+    <ul>
+      <li><a href="./index.html">todo list</a></li>
+      <li><a href="./home.html">home</i></a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="./sharing.html">Memo</a></li>
+      <li><a href="./flashcard.html">Flashcard</a></li>
+      <li><a href="./training.html">Training</a></li>
+      <li><a href="./profile.html">about me</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 
   <div id="inputContainer">
     <!-- タスクの入力フォーム -->
     <div class="inputGroup">
+      <div class="toggle">
+        <span id="deleteconpo" class="toggler"></span>
+      </div>
       <input type="text" id="taskInput" placeholder="Task">
       <button class="addingbtn" id="addButton" onclick="addTask()">+</button>
       <div class="message1" id="message"></div>
@@ -67,8 +73,8 @@
 
   <!-- 完了済みタスクリスト -->
 
-  <!-- <h2>完了済みタスク</h2>
-  <ul id="completedTaskList"></ul> -->
+  <h2>完了済みタスク</h2>
+  <ul id="completedTaskList"></ul>
 
   <!-- タスク操作ドロップダウンメニュー -->
 

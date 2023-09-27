@@ -148,6 +148,9 @@ tasksRef.on('value', function(snapshot) {
 
     completeButton.addEventListener('click', function() {
       toggleComplete(taskId, taskData.completed);
+      if (!taskData.completed) {
+        moveToCompleted(taskId, taskData);
+      }
     });
     taskItem.appendChild(completeButton);
 
@@ -172,12 +175,20 @@ function toggleComplete(taskId, currentCompleted) {
 
  // 編集モードに入る処理
  function enterEditMode(taskId) {
+  //タスクアイテムを取得する
   var taskItem = document.querySelector(`li[data-task-id="${taskId}"]`);
+  //タスクのテキストを取得する
   var taskText = taskItem.querySelector('span');
+  //編集ボタンを取得する
   var editButton = taskItem.querySelector('.edit-button');
-
+ // クリックされた編集ボタンのスタイルを設定
+ editButton.style.position = 'absolute';
+ editButton.style.zIndex = '100';
   taskText.contentEditable = true;
   taskText.focus();
+
+
+
     // ボタンを切り替える
   editButton.innerText = 'Finish Edit';
   // クラスを変更する
@@ -186,7 +197,11 @@ function toggleComplete(taskId, currentCompleted) {
  // イベントリスナーを変更する
   editButton.removeEventListener('click', enterEditMode);
   editButton.addEventListener('click', function() {
+    // ページをリロードする
+location.reload();
+
     exitEditMode(taskId);
+    
   });
 }
 
@@ -279,3 +294,52 @@ function filterTasks() {
     }
   });
 }
+
+const toggler = document.querySelector(".toggle");
+
+window.addEventListener("click", event => {
+  if(event.target.className == "toggle" || event.target.className == "toggle") {
+    document.body.classList.toggle("show-nav");
+    document.getElementById("deleteconpo").classList.toggle("deleteclass")
+  } else if (event.target.className == "overlay") {
+    document.body.classList.remove("show-nav");
+document.getElementById("deleteconpo").classList.toggle("deleteclass")
+  }
+
+});
+
+// 'tasksRef'変数を完了したタスクを参照するように更新
+var completedTasksRef = database.ref('completedTasks');
+  
+// タスクを完了済みタスクリストに移動する関数
+function moveToCompleted(taskId, taskData) {
+  var completedTaskRef = completedTasksRef.push();
+  completedTaskRef.set(taskData);
+
+  // オリジナルのリストからタスクを削除
+  var taskRef = tasksRef.child(taskId);
+  taskRef.remove();
+}
+
+
+// 完了済みタスクを表示する関数
+function renderCompletedTasks() {
+  completedTasksRef.on('value', function(snapshot) {
+    var completedTaskList = document.getElementById('completedTaskList');
+    completedTaskList.innerHTML = '';
+
+    snapshot.forEach(function(childSnapshot) {
+      var taskId = childSnapshot.key;
+      var taskData = childSnapshot.val();
+
+      var completedTaskItem = document.createElement('li');
+      completedTaskItem.classList.add('completed-task');
+      completedTaskItem.textContent = taskData.text;
+
+      completedTaskList.appendChild(completedTaskItem);
+    });
+  });
+}
+
+// 初めに完了済みタスクを表示するためにrenderCompletedTasks関数を呼び出します
+renderCompletedTasks();

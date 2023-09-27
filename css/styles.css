@@ -22,7 +22,7 @@ header{
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 100;
   display: flex;
   justify-content: space-between; /* 要素間のスペースを均等にする */
 }
@@ -87,11 +87,11 @@ input[type="text"] {
   #inputContainer {
     height: 80px;
     position: fixed;
-    top: 80px;
+    top: 20px;
     left: 0;
     width: 100%;
     background-color: #e2e6eb9f;
-    z-index: 800;
+    z-index: 100;
     display: flex;
     justify-content: space-between; /* 要素間のスペースを均等にする */
   }
@@ -181,7 +181,122 @@ button:hover{
 .selecter:hover{
   background-color:#d4d4d4;
 }
+#taskCount{
+  font-size: 20px;
+  width: 120px;
+}
 
+/* Drawer */
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.3);
+  z-index: 190;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in;
+}
+nav.nav {
+  width: 270px;
+  height: 100vh;
+  background-color: #FFF;
+  left: -270px;
+  top: 0;
+  position: fixed;
+  padding: 20px 0;
+  transition: all 200ms ease-in-out;
+  z-index: 199;
+}
+nav.nav ul {
+    border: none;
+    padding: 0;
+}
+.toggle {
+  position: relative;
+  left: 100%;
+  width: 50px;
+  height: 50px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#hidari{
+  float: right;
+}
+span.toggler,
+span.toggler:before,
+span.toggler:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: black;
+    position: absolute;
+    pointer-events: none;
+}
+
+span.toggler:before{
+    bottom: 9px;
+}
+span.toggler:after {
+    top: 9px;
+}
+span.deleteclass {
+    background-color: transparent;
+}
+span.deleteclass::before {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+span.deleteclass::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.logo  a{
+  text-decoration: none;
+  color: #888;
+  font-size: 2rem;
+}
+.nav ul li {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav ul li a {
+  padding: 10px 20px;
+  display: block;
+  color: #313131;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 200ms ease;
+}
+.nav ul li a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show Nav */
+.show-nav .nav {
+  left: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,.6);
+}
+.show-nav .overlay {
+  opacity: 1;
+  visibility: visible;
+}
 
 
 /* カテゴリ分け */
@@ -218,7 +333,7 @@ button:hover{
 
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 655px) {
  
 }
 
@@ -261,12 +376,13 @@ button:hover{
   .selectlabel{
     width: 100px;
   }
-
-
   #taskCount{
     font-size: 10px;
     width: 70px;
   }
+  
+
+
 
   /* タスクの入力フォーム */
   input[type="text"] {
