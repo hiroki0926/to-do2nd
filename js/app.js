@@ -334,6 +334,7 @@ function renderCompletedTasks() {
 
       var completedTaskItem = document.createElement('li');
       completedTaskItem.classList.add('completed-task');
+      completedTaskItem.classList.add('task');
       completedTaskItem.textContent = taskData.text;
 
       completedTaskList.appendChild(completedTaskItem);
