@@ -79,12 +79,25 @@ taskInput.addEventListener('keydown', function(event) {
 });
 
 // タスクの読み込み
-tasksRef.on('value', function(snapshot) {
+tasksRef.on('value', function(snapshot) { 
   taskList.innerHTML = '';
+
+  var tasksArray = []; // タスクを格納する配列
 
   snapshot.forEach(function(childSnapshot) {
     var taskId = childSnapshot.key;
     var taskData = childSnapshot.val();
+    tasksArray.push({ id: taskId, data: taskData }); // タスクを配列に追加
+  });
+
+  // タスクを逆順にソート
+  tasksArray.reverse();
+
+  tasksArray.forEach(function(task) {
+    var taskId = task.id;
+    var taskData = task.data;
+
+
 
     var taskItem = document.createElement('li');
     taskItem.classList.add('task');
@@ -104,7 +117,7 @@ tasksRef.on('value', function(snapshot) {
      });
 
       // ジャンル選択肢を追加
-    var categories = ["未分類","study", "shopping", "challenge", "programming","work","DIY","hobby","circle"];
+    var categories = ["未分類","study", "shopping", "challenge", "programming","work","DIY","hobby","circle","knowledge"];
     for (var i = 0; i < categories.length; i++) {
       var option = document.createElement('option');
       option.value = categories[i];
@@ -271,14 +284,44 @@ function changeCategory(taskId, newCategory) {
   });
 }
 
+// タスク数を更新し、色を変更するための関数
+function updateTaskCountColor(count) {
+  var taskCountElement = document.getElementById('taskCount');
+  taskCountElement.textContent = 'タスク: ' + count;
+
+  if (count > 100) {
+    taskCountElement.style.color = 'red';
+  } else if (count > 50) {
+    taskCountElement.style.color = 'blue';
+  } else {
+    taskCountElement.style.color = 'black';
+  }
+}
+
+// Update the task count initially
+updateTaskCount();
+
 // タスクの数を更新する処理
 function updateTaskCount() {
   var taskCount = document.getElementById('taskCount');
   tasksRef.once('value', function(snapshot) {
     var count = snapshot.numChildren();
     taskCount.textContent = 'Tasks: ' + count;
+    updateTaskCountColor(count);
+    
   });
 }
+// Update the task count whenever tasks change
+tasksRef.on('value', function(snapshot) {
+  var count = 0; // タスク数の初期値を0に設定
+  snapshot.forEach(function(childSnapshot) {
+    var taskData = childSnapshot.val();
+    if (!taskData.completed) {
+      count++; // 未完了のタスクの場合のみカウントを増やす
+    }
+  });
+  updateTaskCountColor(count);
+});
 
 function filterTasks() {
   var categorySelect = document.getElementById('categorySelect');
@@ -322,27 +365,104 @@ function moveToCompleted(taskId, taskData) {
 }
 
 
-// 完了済みタスクを表示する関数
-function renderCompletedTasks() {
-  completedTasksRef.on('value', function(snapshot) {
+completedTasksRef.on('value', function(snapshot) {
+  var completedTaskList = document.getElementById('completedTaskList');
+  completedTaskList.innerHTML = '';
+
+  snapshot.forEach(function(childSnapshot) {
+    var completedtaskId = childSnapshot.key;
+    var completedtaskData = childSnapshot.val();
+
+   
+    var completedTaskItem = document.createElement('li');
+    completedTaskItem.classList.add('completed-task',"completed");
+    completedTaskItem.setAttribute('data-completedtask-id', completedtaskId);
+
+     // タスクテキストの表示
+     var completedtaskText = document.createElement('span');
+     completedtaskText.innerText = completedtaskData.text;
+
+
+    var uncompleteButton = document.createElement('i');
+    uncompleteButton.classList.add('fas', 'fa-check','complete-button'); // 追加
+    uncompleteButton.classList.add('btn1');
+
+// 完了ボタンのクリックを処理するためのイベントリスナーを追加
+uncompleteButton.addEventListener('click', function() {
+// タスクの完了状態を切り替えるロジックを実装します
+
+// 完了済みタスクから通常のタスクリストに戻すアクションを実行
+moveToTasks(completedtaskId, completedtaskData);
+
+});
+completedTaskItem.appendChild(uncompleteButton);
+
+//完了済みタスクから通常のタスクリストに戻す関数
+function moveToTasks(taskId, taskData) {
+var taskRef = tasksRef.push();
+taskRef.set({
+  text: taskData.text,
+  category: taskData.category,
+  completed: false
+});
+
+// 完了済みタスクから削除
+var completedTaskRef = completedTasksRef.child(taskId);
+completedTaskRef.remove();
+}
+
+
+
+
+    completedTaskItem.appendChild(completedtaskText);
+
+    completedTaskList.appendChild(completedTaskItem);
+  });
+});
+
+// 完了済みタスクを全て削除する関数
+function deleteAllCompletedTasks() {
+  var confirmation = confirm("本当に完了済みタスクを全て削除しますか？");
+  if (confirmation) {
+    completedTasksRef.remove(); // 完了済みタスクを全て削除
+
+    // 完了済みタスクのリストをクリア
     var completedTaskList = document.getElementById('completedTaskList');
     completedTaskList.innerHTML = '';
 
-    snapshot.forEach(function(childSnapshot) {
-      var taskId = childSnapshot.key;
-      var taskData = childSnapshot.val();
-
-      var completedTaskItem = document.createElement('li');
-      completedTaskItem.classList.add('completed-task');
-      completedTaskItem.classList.add('task');
-      completedTaskItem.classList.add('completed');
-
-      completedTaskItem.textContent = taskData.text;
-
-      completedTaskList.appendChild(completedTaskItem);
-    });
-  });
+   
+  }
 }
 
-// 初めに完了済みタスクを表示するためにrenderCompletedTasks関数を呼び出します
-renderCompletedTasks();
+
+// const nodemailer = require('nodemailer');
+// const firebase = require('firebase');
+
+
+
+
+// // Firebase Realtime Databaseの参照
+// const database = firebase.database();
+// const tasksRef = database.ref('tasks');
+
+// // メール送信に関する設定
+// const transporter = nodemailer.createTransport({
+//   service: 'Gmail', // SMTPサービスプロバイダを指定
+//   auth: {
+//     user: 'hiroki.fujii0926@gmail.com', // 送信元のメールアドレス
+//     pass: '19960622' // 送信元のメールアドレスのパスワード
+//   }
+// });
+
+// // 未完了のタスクを取得
+// tasksRef.orderByChild('completed').equalTo(false).once('value', (snapshot) => {
+//   const tasks = [];
+//   snapshot.forEach((childSnapshot) => {
+//     const taskId = childSnapshot.key;
+//     const taskData = childSnapshot.val();
+//     tasks.push({ id: taskId, data: taskData });
+//   });
+
+//   // 未完了のタスクをメールで送信する処理をここに追加
+//   // メールの本文にタスク情報を含めるなどのカスタマイズが可能
+// });

@@ -1,6 +1,66 @@
 /* header設定start-------------------- */
 /* header設定end----------------------- */
-
+.cp_tab *, .cp_tab *:before, .cp_tab *:after {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.cp_tab {
+	margin: 1em auto;
+  margin-top: 100px;
+}
+.cp_tab > input[type='radio'] {
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	background: none;
+	-webkit-appearance: none;
+	        appearance: none;
+	display: none;
+}
+.cp_tab .cp_tabpanel {
+	display: none;
+}
+.cp_tab > input:first-child:checked ~ .cp_tabpanels > .cp_tabpanel:first-child,
+.cp_tab > input:nth-child(3):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(2),
+.cp_tab > input:nth-child(5):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(3),
+.cp_tab > input:nth-child(7):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(4),
+.cp_tab > input:nth-child(9):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(5),
+.cp_tab > input:nth-child(11):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(6) {
+	display: block;
+}
+.cp_tab > label {
+	position: relative;
+	display: inline-block;
+	padding: 15px;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-bottom: 0;
+}
+.cp_tab > label:hover,
+.cp_tab > input:focus + label {
+	color: #0066cc;
+}
+.cp_tab > input:checked + label {
+	margin-bottom: -1px;
+	border-color: #cccccc;
+	border-bottom: 1px solid #ffffff;/*背景色と同じ*/
+	border-radius: 6px 6px 0 0;
+}
+.cp_tab .cp_tabpanel {
+	padding: 0.5em 1em;
+	border-top: 1px solid #cccccc;
+}
+@media (max-width: 480px) {
+	.cp_tab {
+		width: 100%;
+		font-size: 0.8em;
+	}
+	.cp_tab label {
+		padding: 0.5em;
+	}
+}
 
 
 /* 基本設定start------------------- */
@@ -108,7 +168,10 @@ input[type="text"] {
 .wrapper{
   display: flex;
   flex-direction: column;
-  margin-top: 160px;
+  margin-top: 0px;
+  float: left;
+  width: 80%;
+  padding-left: 10px;
 }
 
 body {
@@ -124,16 +187,45 @@ h1 {
   text-align: center;
 }
 
-.task{
+.task, .completed-task{
   width: 600px;
   list-style-type: none;
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
+
+
 .wrapper{
+  width: 1300px;
   display: flex;
   flex-direction: column;
+  /* float: left; */
 }
+/* タスクコンテナと完了済みタスクコンテナ */
+.task-container, .completed-task-container {
+  width: 600px;
+  float: right;
+  box-sizing: border-box;
+}
+
+.completed-task-container{}
+
+
+/* .task-container ul, .completed-task-container ul {
+ width: 600px;
+
+} */
+
+
+/* タスクリストと完了済みタスクリスト */
+.tasklist {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* その他のスタイルはそのままで構いません */
+
+
 
 /* ボタン */
 .addingbtn:hover{
@@ -326,6 +418,9 @@ span.deleteclass::after {
 }
 .category-circle{
   color: rgb(71, 157, 255);
+}
+.category-knowledge{
+  color: brown;
 }
 
 

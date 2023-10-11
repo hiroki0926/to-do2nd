@@ -8,9 +8,18 @@
   <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-
-<div class="overlay"></div>
+  <div class="cp_tab">
+    <input type="radio" name="cp_tab" id="tab1_1" aria-controls="first_tab01" checked>
+    <label for="tab1_1">First Tab</label>
+    <input type="radio" name="cp_tab" id="tab1_2" aria-controls="second_tab01">
+    <label for="tab1_2">Second Tab</label>
+    <input type="radio" name="cp_tab" id="tab1_3" aria-controls="third_tab01">
+    <label for="tab1_3">Third Tab</label>
+    <input type="radio" name="cp_tab" id="tab1_4" aria-controls="force_tab01">
+    <label for="tab1_4">Force Tab</label>
+    <div class="cp_tabpanels">
+      <div id="first_tab01" class="cp_tabpanel">
+      <div class="overlay"></div>
   <nav class="nav">
     <div class="logo">
       <a href="#">LOGO</a>
@@ -48,14 +57,14 @@
         <!-- カテゴリの追加 -->
       </select>
       <!-- タスクの数を表示する要素 -->
-      <div id="taskCount">Tasks: 0</div>
+      <div id="taskCount" class="task-count">Tasks: 0</div>
     </div>
 
 
 </div>
 
+
   <div class="wrapper">
-  <!-- タスクリスト -->
   <h2>タスク</h2>
   <div class="inputGroup">
     <label for="categorySelect">カテゴリを選択:</label>
@@ -66,22 +75,50 @@
       <option value="shopping">Shopping</option>
       <option value="challenge">Today's Big Challenge</option>
       <option value="programming">Programming</option>
+      <option value="knowledge">knowledge</option>
       <!-- 他のカテゴリも追加 -->
     </select>
   </div>
-  <ul id="taskList" class="tasklist"></ul>
+  <div class="task-container">
+    <ul id="taskList" class="tasklist"></ul>
+  </div>
+
 
   <!-- 完了済みタスクリスト -->
-
+<div class="completed-task-container">
   <h2>完了済みタスク</h2>
+  <button class="delete-completed-button" onclick="deleteAllCompletedTasks()">削除</button>
   <ul id="completedTaskList" class="tasklist"></ul>
-
+</div>
+  
   <!-- タスク操作ドロップダウンメニュー -->
 
 
 </div>
   <!-- フロントエンドのコンテンツ -->
   
+
+
+
+
+
+      </div>
+      <div id="second_tab01" class="cp_tabpanel">
+      <h2>Second Tab</h2>
+      <p>Second Tab text</p>
+      </div>
+      <div id="third_tab01" class="cp_tabpanel">
+      <h2>Third Tab</h2>
+      <p>Third Tab text</p>
+      </div>
+      <div id="force_tab01" class="cp_tabpanel">
+      <h2>Force Tab</h2>
+      <p>Force Tab text</p>
+      </div>
+    </div>
+  </div>
+
+
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
   <script src="./js/app.js"></script>
