@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 // タスクの追加
 var taskInput = document.getElementById('taskInput');
 var addButton = document.getElementById('addButton');
-var categorySelect = document.getElementById('categorySelect');
+var categorySelect = document.getElementById('categorySelect1');
 var taskList = document.getElementById('taskList');
 
 function addTask() {
